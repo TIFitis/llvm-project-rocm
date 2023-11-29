@@ -2662,7 +2662,7 @@ genTargetOp(Fortran::lower::AbstractConverter &converter,
                  Fortran::parser::OmpClause::Firstprivate,
                  Fortran::parser::OmpClause::IsDevicePtr,
                  Fortran::parser::OmpClause::HasDeviceAddr,
-                 Fortran::parser::OmpClause::Reduction,
+                 //                 Fortran::parser::OmpClause::Reduction,
                  Fortran::parser::OmpClause::InReduction,
                  Fortran::parser::OmpClause::Allocate,
                  Fortran::parser::OmpClause::UsesAllocators,
@@ -2763,8 +2763,8 @@ genTeamsOp(Fortran::lower::AbstractConverter &converter,
   cp.processDefault();
   cp.processNumTeams(stmtCtx, numTeamsClauseOperand);
   cp.processThreadLimit(stmtCtx, threadLimitClauseOperand);
-  cp.processTODO<Fortran::parser::OmpClause::Reduction>(
-      currentLocation, llvm::omp::Directive::OMPD_teams);
+  //  cp.processTODO<Fortran::parser::OmpClause::Reduction>(
+  //      currentLocation, llvm::omp::Directive::OMPD_teams);
 
   return genOpWithBody<mlir::omp::TeamsOp>(
       converter, eval, currentLocation, outerCombined, &clauseList,
